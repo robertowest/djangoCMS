@@ -136,9 +136,13 @@ AUTH_PASSWORD_VALIDATORS = []
 MIDDLEWARE += [
     'django.middleware.locale.LocaleMiddleware',
 ]
+TEMPLATES[0]['DIRS'] = ['templates']
 TEMPLATES[0]['OPTIONS']['context_processors'] += [
     'django.template.context_processors.i18n',
 ]
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
 
 # -----------------------------------------------------------------------------
 # djangoCMS
@@ -160,6 +164,28 @@ LANGUAGES = [
     ('en', 'Inglés'),
     ('fr', 'Francés'),
 ]
+CMS_LANGUAGES = {
+    SITE_ID: [
+        {
+            'code': 'es',
+            'name': 'Español',
+        },
+        {
+            'code': 'en',
+            'name': 'Inglés',
+        },
+        {
+            'code': 'fr',
+            'name': 'Francés',
+        },
+    ],
+    'default': {
+        'fallbacks': ['es', 'en', 'fr'],
+        'redirect_on_fallback': True,
+        'public': True,
+        'hide_untranslated': False,
+    }
+}
 TEMPLATES[0]['OPTIONS']['context_processors'] += [
     'sekizai.context_processors.sekizai',
     'cms.context_processors.cms_settings',
@@ -171,3 +197,24 @@ MIDDLEWARE += [
     'cms.middleware.language.LanguageCookieMiddleware',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+CMS_TEMPLATES = [
+    ('home.html', 'Home page template'),
+]
+DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
+
+
+# -----------------------------------------------------------------------------
+# djangoCMS plugins: filer
+# -----------------------------------------------------------------------------
+INSTALLED_APPS += [
+    'filer',
+    'easy_thumbnails',
+    'mptt',
+]
+THUMBNAIL_HIGH_RESOLUTION = True
+THUMBNAIL_PROCESSORS = [
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters'
+]
