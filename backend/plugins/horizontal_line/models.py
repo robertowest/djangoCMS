@@ -1,3 +1,5 @@
+from django.utils.translation import gettext_lazy as _
+
 from cms.models import CMSPlugin
 
 
@@ -10,4 +12,4 @@ class HorizontalLinePlugin(CMSPlugin):
     # type = EnumField(LineType, default=LineType.BLUE)
 
     def __str__(self):
-        return 'Horizontal line plugin'
+        return _('Horizontal line plugin')

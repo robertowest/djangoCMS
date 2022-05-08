@@ -92,3 +92,19 @@ msgstr "Oscuro"
 #: backend/settings.py:293
 msgid "Custom"
 msgstr "Personalizado"
+
+#: backend/plugins/horizontal_line/cms_plugins.py:13
+msgid "field-name"
+msgstr ""
+
+#: backend/plugins/horizontal_line/models.py:15
+msgid "Horizontal line plugin"
+msgstr "Complemento de línea horizontal"
+
+#: backend/plugins/module_name.py:3
+msgid "Generic"
+msgstr "Genérico"
+
+#: backend/plugins/section_with_image_background/cms_plugins.py:19
+msgid "Section with image background"
+msgstr "Sección con fondo de imagen"

@@ -1,5 +1,7 @@
-from cms.models.pluginmodel import CMSPlugin
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+from cms.models.pluginmodel import CMSPlugin
 from enumfields import Enum
 from enumfields import EnumField
 from filer.fields.image import FilerImageField

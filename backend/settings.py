@@ -129,6 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # -----------------------------------------------------------------------------
 # configuraciones personalizadas
 # -----------------------------------------------------------------------------
+import os
 from django.utils.translation import gettext_lazy as _
 
 BACKEND_DIR = Path(__file__).resolve().parent
@@ -144,14 +145,20 @@ MIDDLEWARE += [
     'django.middleware.locale.LocaleMiddleware',
 ]
 LOCALE_PATHS = [BACKEND_DIR / 'locale',]
-TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
+# TEMPLATES[0]['DIRS'] = [BACKEND_DIR / 'templates']
+TEMPLATES[0]['DIRS'] = [
+    os.path.join(BACKEND_DIR, 'templates'),
+]
 TEMPLATES[0]['OPTIONS']['context_processors'] += [
     'django.template.context_processors.i18n',
 ]
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'static_collected'
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+STATIC_URL       = os.path.join(BACKEND_DIR, 'static/')
+STATIC_ROOT      = os.path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = [
+    os.path.join(BACKEND_DIR, 'static/'),
+]
+MEDIA_URL        = '/media/'
+MEDIA_ROOT       = os.path.join(BASE_DIR, 'media/')
 
 
 # -----------------------------------------------------------------------------
@@ -302,4 +309,12 @@ INSTALLED_APPS += [
     'djangocms_googlemap',
     'djangocms_snippet',
     'djangocms_style',
+]
+
+# -----------------------------------------------------------------------------
+# djangoCMS plugins locales
+# -----------------------------------------------------------------------------
+INSTALLED_APPS += [
+    'backend.plugins.horizontal_line',
+    'backend.plugins.section_with_image_background',
 ]
