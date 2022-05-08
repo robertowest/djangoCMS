@@ -130,16 +130,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # -----------------------------------------------------------------------------
 # configuraciones personalizadas
 # -----------------------------------------------------------------------------
+from django.utils.translation import gettext_lazy as _
+
 LANGUAGE_CODE = 'es'
 TIME_ZONE = 'Europe/Madrid'
 AUTH_PASSWORD_VALIDATORS = []
 MIDDLEWARE += [
     'django.middleware.locale.LocaleMiddleware',
 ]
-TEMPLATES[0]['DIRS'] = ['templates']
+TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
 TEMPLATES[0]['OPTIONS']['context_processors'] += [
     'django.template.context_processors.i18n',
 ]
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'static_collected'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
@@ -160,23 +164,23 @@ INSTALLED_APPS += [
 ]
 SITE_ID = 1
 LANGUAGES = [
-    ('es', 'Español'),
-    ('en', 'Inglés'),
-    ('fr', 'Francés'),
+    ('es', _('Español')),
+    ('en', _('Inglés')),
+    ('fr', _('Francés')),
 ]
 CMS_LANGUAGES = {
     SITE_ID: [
         {
             'code': 'es',
-            'name': 'Español',
+            'name': _('Español'),
         },
         {
             'code': 'en',
-            'name': 'Inglés',
+            'name': _('Inglés'),
         },
         {
             'code': 'fr',
-            'name': 'Francés',
+            'name': _('Francés'),
         },
     ],
     'default': {
@@ -198,14 +202,14 @@ MIDDLEWARE += [
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 CMS_TEMPLATES = [
-    ('home.html', 'Home page template'),
+    ('layouts/home.html', _('Plantilla de página de inicio')),
 ]
-DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
 
 
 # -----------------------------------------------------------------------------
-# djangoCMS plugins: filer
+# djangoCMS plugins
 # -----------------------------------------------------------------------------
+# --- filer -------------------------------------------------------------------
 INSTALLED_APPS += [
     'filer',
     'easy_thumbnails',
@@ -217,4 +221,84 @@ THUMBNAIL_PROCESSORS = [
     'easy_thumbnails.processors.autocrop',
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
+]
+# --- text_ckeditor -----------------------------------------------------------
+INSTALLED_APPS += [
+    'djangocms_text_ckeditor',
+]
+# --- bootstrap 4 -------------------------------------------------------------
+INSTALLED_APPS += [
+    'djangocms_bootstrap4',
+    'djangocms_bootstrap4.contrib.bootstrap4_alerts', 
+    'djangocms_bootstrap4.contrib.bootstrap4_badge', 
+    'djangocms_bootstrap4.contrib.bootstrap4_card', 
+    'djangocms_bootstrap4.contrib.bootstrap4_carousel', 
+    'djangocms_bootstrap4.contrib.bootstrap4_collapse', 
+    'djangocms_bootstrap4.contrib.bootstrap4_content', 
+    'djangocms_bootstrap4.contrib.bootstrap4_grid', 
+    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron', 
+    'djangocms_bootstrap4.contrib.bootstrap4_link', 
+    'djangocms_bootstrap4.contrib.bootstrap4_listgroup', 
+    'djangocms_bootstrap4.contrib.bootstrap4_media', 
+    'djangocms_bootstrap4.contrib.bootstrap4_picture', 
+    'djangocms_bootstrap4.contrib.bootstrap4_tabs', 
+    'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+]
+DJANGOCMS_BOOTSTRAP4_TAG_CHOICES = ['div', 'section', 'article', 'header', 'footer', 'aside']
+
+DJANGOCMS_BOOTSTRAP4_CAROUSEL_TEMPLATES = (
+    ('default', _('Default')),
+)
+
+DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 12
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = (
+    ('container', _('Container')),
+    ('container-fluid', _('Fluid container')),
+)
+DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = (
+    ('col', _('Column')),
+    ('w-100', _('Break')),
+    ('', _('Empty'))
+)
+
+DJANGOCMS_BOOTSTRAP4_USE_ICONS = True
+
+DJANGOCMS_BOOTSTRAP4_TAB_TEMPLATES = (
+    ('default', _('Default')),
+)
+
+DJANGOCMS_BOOTSTRAP4_SPACER_SIZES = (
+    ('0', '* 0'),
+    ('1', '* .25'),
+    ('2', '* .5'),
+    ('3', '* 1'),
+    ('4', '* 1.5'),
+    ('5', '* 3'),
+)
+
+DJANGOCMS_BOOTSTRAP4_CAROUSEL_ASPECT_RATIOS = (
+    (16, 9),
+)
+
+DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES = (
+    ('primary', _('Primary')),
+    ('secondary', _('Secondary')),
+    ('success', _('Success')),
+    ('danger', _('Danger')),
+    ('warning', _('Warning')),
+    ('info', _('Info')),
+    ('light', _('Light')),
+    ('dark', _('Dark')),
+    ('custom', _('Custom')),
+)
+# --- otros -------------------------------------------------------------------
+INSTALLED_APPS += [
+    'djangocms_icon',
+    'djangocms_link',
+    'djangocms_file',
+    'djangocms_picture',
+    'djangocms_video',
+    'djangocms_googlemap',
+    'djangocms_snippet',
+    'djangocms_style',
 ]
