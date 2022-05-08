@@ -331,4 +331,5 @@ fabric.properties
 *.sqlite3
 *.zip
 
+static_collected/*
 */migrations/*
