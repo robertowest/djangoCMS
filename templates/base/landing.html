@@ -1,3 +1,5 @@
+{# plantilla para páginas landing con bootstrap4 #}
+
 {% load cms_tags sekizai_tags static i18n menu_tags %}
 
 {% get_current_language as lang_code %}
@@ -10,7 +12,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <title>
-            {% block title %}Título de la página{% endblock title %}
+            {% block title %}
+                {% page_attribute "page_title" %}
+            {% endblock title %}
         </title>
 
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
@@ -44,6 +48,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% render_block "js" %}
-
     </body>
 </html>

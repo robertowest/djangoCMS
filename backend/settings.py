@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -132,12 +131,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # -----------------------------------------------------------------------------
 from django.utils.translation import gettext_lazy as _
 
+BACKEND_DIR = Path(__file__).resolve().parent
 LANGUAGE_CODE = 'es'
+LANGUAGES = [
+    ('es', _('Español')),
+    ('en', _('Inglés')),
+    ('fr', _('Francés')),
+]
 TIME_ZONE = 'Europe/Madrid'
 AUTH_PASSWORD_VALIDATORS = []
 MIDDLEWARE += [
     'django.middleware.locale.LocaleMiddleware',
 ]
+LOCALE_PATHS = [BACKEND_DIR / 'locale',]
 TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
 TEMPLATES[0]['OPTIONS']['context_processors'] += [
     'django.template.context_processors.i18n',
@@ -163,11 +169,6 @@ INSTALLED_APPS += [
     'sekizai',
 ]
 SITE_ID = 1
-LANGUAGES = [
-    ('es', _('Español')),
-    ('en', _('Inglés')),
-    ('fr', _('Francés')),
-]
 CMS_LANGUAGES = {
     SITE_ID: [
         {

@@ -1,12 +1,26 @@
+{# plantilla básica #}
+
 {% load cms_tags sekizai_tags %}
-<html>
+
+{% get_current_language as lang_code %}
+
+<!doctype html>
+<html lang="{{ lang_code }}">
     <head>
-        <title>{% page_attribute "page_title" %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>
+            {% page_attribute "page_title" %}
+        </title>
+
         {% render_block "css" %}
     </head>
     <body>
         {% cms_toolbar %}
         {% placeholder "content" %}
+        
         {% render_block "js" %}
     </body>
 </html>

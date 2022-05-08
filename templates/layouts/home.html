@@ -3,7 +3,9 @@
 {% load cms_tags sekizai_tags static %}
 
 
-{% block messages %}{# remove from here to move them below #}{% endblock messages %}
+{% block messages %}
+    {# desactivamos este sector para cambiarlo de lugar #}
+{% endblock messages %}
 
 {% block content %}
     {% include 'base/includes/messages.html' with messages=messages %}
