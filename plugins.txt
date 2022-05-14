@@ -1,0 +1,76 @@
+https://www-django--cms-org.translate.goog/en/repositories-plugins/?_x_tr_sl=auto&_x_tr_tl=es&_x_tr_hl=es
+
+djangocms-text-ckeditor
+Complemento de texto para django CMS usando CKEditor 4
+
+djangocms-history
+Proporciona la funcionalidad de deshacer/rehacer para las operaciones de django CMS
+
+djangocms-page-meta
+Aplicación para manejar redirecciones en Django, integrada con páginas CMS de django
+
+djangocms-page-sitemap
+extensión de página django CMS para manejar la personalización del mapa del sitio
+
+djangocms-installer
+Asistente de consola para iniciar proyectos de Django CMS
+
+djangocms-blog
+Aplicación de blog django CMS: soporte para publicaciones multilingües, marcadores de posición, metaetiquetas de redes sociales y apphooks configurables
+
+djangocms-bootstrap4
+django CMS Bootstrap 4 es un paquete de complementos para django CMS que proporciona varios componentes del popular marco Bootstrap 4.
+
+djangocms-link-all
+Complemento de enlace CMS que permite vincular todos los modelos (blogs, eventos, etc.) en lugar de solo páginas CMS
+
+djangocms-link
+django CMS Link es un complemento para django CMS que le permite agregar enlaces en su sitio.
+
+djangocms-maps
+Un complemento de mapas universal para django CMS, compatible con todos los principales proveedores de mapas.
+
+djangocms-audio
+django CMS Audio es un conjunto de complementos para django CMS. Eso le permite publicar archivos de audio en su sitio.
+
+djangocms-picture
+django CMS Picture es un complemento para django CMS que le permite agregar imágenes en su sitio.
+
+djangocms-snippet
+django CMS Snippet proporciona un complemento para django CMS para inyectar fragmentos de HTML, CSS o JavaScript en su sitio web.
+
+aldryn-forms
+Formularios HTML flexibles para sus proyectos django CMS
+
+django-chatire
+Aplicación de chat en tiempo real creada con Vue, Django, RabbitMQ y uWSGI WebSockets.
+
+djangocms-file
+django CMS File es un conjunto de complementos para django CMS que le permiten agregar archivos a su sitio. Puede elegir un solo archivo o una carpeta completa.
+
+djangocms-modules
+Cree complementos directamente desde su contenido.
+
+djangocms-algolia
+Permite indexar fácilmente las páginas de CMS y enviarlas a algolia.
+
+djangocms-light-gallery
+Complemento DjangoCMS para Light Gallery 1.4.0
+
+djangocms-icon
+Django CMS Icon agrega capacidades para implementar iconos de fuentes o SVG como complementos en su proyecto.
+
+djangocms-transfer
+django CMS Transfer le permite exportar e importar complementos.
+
+djangocms-video
+django CMS Video es un conjunto de complementos para django CMS que le permiten publicar contenido de video en su sitio.
+
+djangocms-attributes-field
+Una implementación obstinada de JSONField para atributos de elementos HTML arbitrarios.
+
+djangocms-style
+django CMS Style es un complemento para django CMS que le permite crear un contenedor HTML que contiene clases, estilos, identificadores y otros atributos.
+
+django-frontify
+Incruste imágenes de Frontify  (DAM) directamente en django CMS, con interfaz de selección de archivos

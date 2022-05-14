@@ -1,0 +1,4 @@
+probando CMS utilizando el clon de django-cms-60min-demo-2021
+/home/roberto/Programación/django/github/django-cms-60min-demo-2021
+
+prueba para el CEU, pero utilizaré solo django
