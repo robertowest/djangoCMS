@@ -152,10 +152,10 @@ TEMPLATES[0]['DIRS'] = [
 TEMPLATES[0]['OPTIONS']['context_processors'] += [
     'django.template.context_processors.i18n',
 ]
-STATIC_URL       = os.path.join(BACKEND_DIR, 'static/')
-STATIC_ROOT      = os.path.join(BASE_DIR, 'static/')
+STATIC_URL       = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT      = os.path.join(BACKEND_DIR, 'static/')
 STATICFILES_DIRS = [
-    os.path.join(BACKEND_DIR, 'static/'),
+    os.path.join(BASE_DIR, 'static/'),
 ]
 MEDIA_URL        = '/media/'
 MEDIA_ROOT       = os.path.join(BASE_DIR, 'media/')
@@ -209,9 +209,17 @@ MIDDLEWARE += [
     'cms.middleware.language.LanguageCookieMiddleware',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-CMS_TEMPLATES = [
-    ('layouts/home.html', _('Plantilla de página de inicio')),
-]
+CMS_TEMPLATES = (
+    ( 'layouts/default.html',   _('Default Page') ),
+    ( 'layouts/fullwidth.html', _('Full Width')   ),
+    ( 'layouts/landing.html',   _('Landing Page') ),
+)
+# CMS_TEMPLATES = (
+#     ## Customize this
+#     ('layouts/fullwidth.html', 'Fullwidth'),
+#     # ('layouts/sidebar_left.html', 'Sidebar Left'),
+#     # ('layouts/sidebar_right.html', 'Sidebar Right')
+# )
 
 
 # -----------------------------------------------------------------------------
