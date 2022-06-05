@@ -1,35 +1,22 @@
-<!doctype html>
+{% extends 'layouts/default.html' %}
 {% load cms_tags sekizai_tags static i18n menu_tags %}
-{% get_current_language as lang_code %}
-<html lang="{{ lang_code }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <title>
-            {% page_attribute "page_title" %}
-        </title>
 
-        {% render_block "css" %}
-    </head>
-    <body>
-        {% cms_toolbar %}
+{% block main_navbar %}
+    <ul class="nav navbar-nav">
+        {% show_menu 0 1 100 100 "layouts/includes/menu.html" %}
+    </ul>
+{% endblock main_navbar %}
 
-        <ul class="nav navbar-nav">
-            {% show_menu 0 1 100 100 "layouts/includes/menu.html" %}
-        </ul>
-        
-        {% block content %}
-            {% placeholder "feature" %}
-            {% placeholder "content" %}
-            {% placeholder "splashbox" %}
-        {% endblock content %}
 
-        <footer>
-            {% static_placeholder 'footer' %}
-        </footer>
+{% block main_content %}
+    {% placeholder "feature" %}
+    {% placeholder "content" %}
+    {% placeholder "splashbox" %}
+{% endblock main_content %}
 
-        {% render_block "js" %}
-    </body>
-</html>
+{% block main_footer %}
+    <footer>
+        {% static_placeholder 'footer' %}
+    </footer>
+{% endblock main_footer %}

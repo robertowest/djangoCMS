@@ -129,6 +129,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # -----------------------------------------------------------------------------
 # configuraciones personalizadas
 # -----------------------------------------------------------------------------
+
+
+
+
 import os
 from django.utils.translation import gettext_lazy as _
 
@@ -159,6 +163,21 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL        = '/media/'
 MEDIA_ROOT       = os.path.join(BASE_DIR, 'media/')
+
+
+# -----------------------------------------------------------------------------
+# base de datos
+# -----------------------------------------------------------------------------
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'NAME': 'dev_ceu',
+        'USER': 'roberto',
+        'PASSWORD': 'roberto',
+    },
+}
 
 
 # -----------------------------------------------------------------------------
@@ -210,9 +229,12 @@ MIDDLEWARE += [
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 CMS_TEMPLATES = (
-    ( 'layouts/default.html',   _('Default Page') ),
-    ( 'layouts/fullwidth.html', _('Full Width')   ),
-    ( 'layouts/landing.html',   _('Landing Page') ),
+    ( 'layouts/default.html',      _('Default Page') ),
+    ( 'layouts/fullwidth.html',    _('Full Width')   ),
+    ( 'layouts/landing.html',      _('Landing Page') ),
+    ( 'layouts/withmargins.html',  _('With Margins') ),
+
+    ( 'layouts/ciclos.html',  _('Ciclos Template') ),
 )
 # CMS_TEMPLATES = (
 #     ## Customize this
@@ -227,8 +249,8 @@ CMS_TEMPLATES = (
 # -----------------------------------------------------------------------------
 # --- filer -------------------------------------------------------------------
 INSTALLED_APPS += [
-    'filer',
     'easy_thumbnails',
+    'filer',
     'mptt',
 ]
 THUMBNAIL_HIGH_RESOLUTION = True

@@ -1,0 +1,24 @@
+{% extends 'layouts/default.html' %}
+{% load cms_tags sekizai_tags static i18n menu_tags %}
+
+
+{% block main_navbar %}
+    <ul class="nav navbar-nav">
+        {% show_menu 0 1 100 100 "layouts/includes/menu.html" %}
+    </ul>
+{% endblock main_navbar %}
+
+
+{% block main_content %}
+    <div class="container">
+        {% placeholder "feature" %}
+        {% placeholder "content" %}
+        {% placeholder "splashbox" %}
+    </div>
+{% endblock main_content %}
+
+{% block main_footer %}
+    <footer>
+        {% static_placeholder 'footer' %}
+    </footer>
+{% endblock main_footer %}

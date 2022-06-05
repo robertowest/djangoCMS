@@ -14,20 +14,37 @@
         </title>
 
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
-        <link rel="stylesheet" href="{% static '/vendors/bootstrap/4.0.0/css/bootstrap.min.css' %}">
+        {% block main_css %}
+            <link rel="stylesheet" href="{% static '/vendors/bootstrap/4.0.0/css/bootstrap.min.css' %}">
+        {% endblock main_css %}
+
+        {% block custom_css %}
+        {% endblock custom_css %}
+
         {% render_block "css" %}
     </head>
     <body>
         {% cms_toolbar %}
 
-        {% block maincontent %}
-            {% placeholder "content" %}
-        {% endblock maincontent %}
+        {% block main_navbar %}
+        {% endblock main_navbar %}
 
-        <script src="{% static '/vendors/jquery/3.2.1/jquery.slim.min.js' %}"></script>
-        <script src="{% static '/vendors/popper/1.12.9/popper.min.js' %}"></script>
-        <script src="{% static '/vendors/bootstrap/4.0.0/js/bootstrap.min.js' %}"></script>
-        
+        {% block main_content %}
+            {% placeholder "content" %}
+        {% endblock main_content %}
+
+        {% block main_footer %}
+        {% endblock main_footer %}
+
+        {% block main_js %}
+            <script src="{% static '/vendors/jquery/3.2.1/jquery.slim.min.js' %}"></script>
+            <script src="{% static '/vendors/popper/1.12.9/popper.min.js' %}"></script>
+            <script src="{% static '/vendors/bootstrap/4.0.0/js/bootstrap.min.js' %}"></script>
+        {% endblock main_js %}
+
+        {% block custom_js %}
+        {% endblock custom_js %}
+
         {% render_block "js" %}
     </body>
 </html>

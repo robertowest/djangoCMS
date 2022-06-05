@@ -1,0 +1,362 @@
+{% extends 'layouts/default.html' %}
+{% load cms_tags sekizai_tags static i18n menu_tags %}
+
+<!-- https://www.webtopic.com/bootstrap-responsive-mega-menu/ -->
+
+{% block main_css %}
+{% endblock main_css %}
+
+{% block custom_css %}
+    {# cambiamos el orden de carga de los css (primero la versión mas nueva de bootstrap) #}
+    <link rel="stylesheet" href="{% static '/css/menu18.css' %}">
+    <link rel="stylesheet" href="{% static '/vendors/bootstrap/4.0.0/css/bootstrap.min.css' %}">
+    <style>
+        .ftco-navbar-light {
+            background: #1c2938 !important;
+            z-index: 3;
+            padding: 10px 10px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);
+            -moz-box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);
+            box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);
+            width: inherit;
+        }
+        
+        @media (max-width: 991.98px) {
+            .ftco-navbar-light {
+                background: #000 !important;
+                position: relative;
+                top: 0;
+                padding: 10px 15px;
+            }
+        }
+        
+        .ftco-navbar-light .navbar-brand {
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        
+        .ftco-navbar-light .navbar-brand:hover,
+        .ftco-navbar-light .navbar-brand:focus {
+            color: #fff;
+        }
+        
+        @media (max-width: 991.98px) {
+            .ftco-navbar-light .navbar-nav {
+                padding-bottom: 10px;
+            }
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item>.nav-link {
+            font-size: 14px;
+            padding-top: 1.2rem;
+            padding-bottom: 1.2rem;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-weight: 400;
+            color: #e6e6e6;
+            position: relative;
+            opacity: 1 !important;
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item>.nav-link:hover {
+            color: #fec771;
+        }
+        
+        @media (max-width: 991.98px) {
+            .ftco-navbar-light .navbar-nav>.nav-item>.nav-link {
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: .9rem;
+                padding-bottom: .9rem;
+                color: rgba(255, 255, 255, 0.7);
+            }
+        
+            .ftco-navbar-light .navbar-nav>.nav-item>.nav-link:hover {
+                color: #fff;
+            }
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu {
+            border: none;
+            background: #fff;
+            -webkit-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
+            -moz-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
+            box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
+            border-radius: 4px;
+            width: 100%;
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .dropdown-item {
+            font-size: 12px;
+            color: #000;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .dropdown-item:hover,
+        .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .dropdown-item:focus {
+            background: #fec771;
+            color: #fff;
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .img {
+            width: 100%;
+            display: block;
+            height: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .text h3 a {
+            color: #000;
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .text span {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 991.98px) {
+            .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu {
+                background: #202020;
+                padding: 0 !important;
+            }
+        
+            .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .dropdown-item {
+                color: rgba(255, 255, 255, 0.8);
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item.cta>a {
+            color: #fff;
+            background: #fec771;
+            border-radius: 0px;
+        }
+        
+        @media (max-width: 767.98px) {
+            .ftco-navbar-light .navbar-nav>.nav-item.cta>a {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+        
+        @media (max-width: 991.98px) {
+            .ftco-navbar-light .navbar-nav>.nav-item.cta>a {
+                color: #fff;
+                background: #fec771;
+                border-radius: 4px;
+            }
+        }
+        
+        .ftco-navbar-light .navbar-nav>.nav-item.active>a {
+            color: #fec771;
+        }
+        
+        @media (max-width: 991.98px) {
+            .ftco-navbar-light .navbar-nav>.nav-item.active>a {
+                color: #fff;
+            }
+        }
+        
+        .ftco-navbar-light .navbar-toggler {
+            border: none;
+            color: rgba(255, 255, 255, 0.5) !important;
+            cursor: pointer;
+            padding-right: 0;
+            text-transform: uppercase;
+            font-size: 16px;
+            letter-spacing: .1em;
+        }
+        
+        .ftco-navbar-light .navbar-toggler:focus {
+            outline: none !important;
+        }
+    </style>
+{% endblock custom_css %}
+
+
+{% block main_navbar %}
+    <div class="wraper">
+        <header>
+            {% show_menu 0 100 100 100 "layouts/includes/menu18.html" %}
+        </header>
+    </div>
+{% endblock main_navbar %}
+
+
+{% block main_content %}
+    {# placeholder "carousel" #}
+    {# placeholder "posts" #}
+    {# placeholder "experience" #}
+
+{% comment "" %}
+    {# posts #}
+    <section>
+        <div class="container-fluid">
+            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
+                    <div class="card-block">
+                        <h4 class="card-title">Tawshif Ahsan Khan</h4>
+                        <div class="meta">
+                            <a href="#">Friends</a>
+                        </div>
+                        <div class="card-text">
+                            Tawshif is a web designer living in Bangladesh.
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="float-right">Joined in 2013</span>
+                        <span><i class=""></i>75 Friends</span>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </section>
+
+    {# experiencia #}
+    <section id="experience" class="featured-services">
+        <div class="jumbotron">
+            <h1>Experiencia ISEP CEU CV</h1>
+            <div class="row mbr-justify-content-center">
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/grupo-educativo.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Grupo educativo</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                <strong>1er grupo educativo</strong> del país.<br>
+                                La fundación San Pablo CEU con centros en todos los niveles educativos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/universidad-pionera.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Nuestro campus global</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                <strong>Instalaciones de primer nivel</strong> adaptado a las necesidades de nuestros alumnos.<br><br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/desarrollo-profesional.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Desarrollo profesional</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Convenios con empresas de primer nivel.<br>
+                                <strong>Programa CEU Pro</strong> de desarrollo de competencias extracurriculares.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/integracion.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Innovación docente y formativa</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Eres lo que haces.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/becas.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Becas</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                <strong>Nº 1</strong> en becas.<br>
+                                La institución educativa privada que más invierte en <strong>becas y ayudas</strong> en España.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/investigacion.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Profesionales en activo</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Contamos con profesores que son a la vez <strong>profesionales en activo</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/investigacion.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Amplia oferta de servicios</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Que aportan un <strong>valor añadido</strong> a tu formación: deportes, biblioteca, orientación, carreras profesionales y más.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </section>
+{% endcomment %}    
+
+    {% placeholder "content" %}
+{% endblock main_content %}
+
+
+{% block main_footer %}
+    <footer>
+        {% placeholder "footer" %}
+    </footer>
+{% endblock main_footer %}
+
+
+{% block custom_js %}
+    <script type="text/javascript">
+        (function($) {
+            "use strict";        
+            $('nav .dropdown').hover(function(){
+                var $this = $(this);
+                $this.addClass('show');
+                $this.find('> a').attr('aria-expanded', true);
+                $this.find('.dropdown-menu').addClass('show');
+            }, function(){
+                var $this = $(this);
+                    $this.removeClass('show');
+                    $this.find('> a').attr('aria-expanded', false);
+                    $this.find('.dropdown-menu').removeClass('show');
+            });
+        
+        })(jQuery);
+    </script>
+{% endblock custom_js %}

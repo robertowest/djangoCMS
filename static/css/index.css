@@ -1,0 +1,12 @@
+.slick-dots{
+position: absolute !important;
+bottom: 20px !important;
+display: flex !important;
+list-style: none !important;
+}
+.slick-dots li button {
+   font-size: 0 !important;
+}
+.slick-dots li.slick-active button:before{
+  font-size:0px !important;
+}

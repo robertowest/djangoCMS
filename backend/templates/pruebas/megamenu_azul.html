@@ -1,0 +1,249 @@
+{% extends 'layouts/default.html' %}
+{% load cms_tags sekizai_tags static i18n menu_tags %}
+
+
+{% block custom_css %}
+<style>
+    .navbar .dropdown-menu div[class*="col"] {
+        margin-bottom:1rem;
+    }
+
+    .navbar .dropdown-menu {
+        border:none;
+        background-color:#0060c8!important;
+    }
+
+    /* breakpoint and up - mega dropdown styles */
+    @media screen and (min-width: 992px) {
+        /* remove the padding from the navbar so the dropdown hover state is not broken */
+        .navbar {
+            padding-top:0px;
+            padding-bottom:0px;
+        }
+
+        /* remove the padding from the nav-item and add some margin to give some breathing room on hovers */
+        .navbar .nav-item {
+            padding:.5rem .5rem;
+            margin:0 .25rem;
+        }
+
+        /* makes the dropdown full width  */
+        .navbar .dropdown {position:static;}
+
+        .navbar .dropdown-menu {
+            width:100%;
+            left:0;
+            right:0;
+            /*  height of nav-item  */
+            top:45px;
+            
+            display:block;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s linear;
+        }
+
+    
+        /* shows the dropdown menu on hover */
+        .navbar .dropdown:hover .dropdown-menu, .navbar .dropdown .dropdown-menu:hover {
+            display:block;
+            visibility: visible;
+            opacity: 1;
+            transition: visibility 0s, opacity 0.3s linear;
+        }
+        
+        .navbar .dropdown-menu {
+            border: 1px solid rgba(0,0,0,.15);
+            background-color: #fff;
+        }
+    }
+</style>
+{% endblock custom_css %}
+
+
+{% block main_navbar %}
+    <div class="wraper">
+        <header>
+            {% show_menu 0 100 100 100 "layouts/includes/menu_nuevo.html" %}
+        </header>
+    </div>
+{% endblock main_navbar %}
+
+
+{% block main_content %}
+    {# placeholder "carousel" #}
+    {# placeholder "posts" #}
+    {# placeholder "experience" #}
+
+{% comment "" %}
+    {# posts #}
+    <section>
+        <div class="container-fluid">
+            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
+                    <div class="card-block">
+                        <h4 class="card-title">Tawshif Ahsan Khan</h4>
+                        <div class="meta">
+                            <a href="#">Friends</a>
+                        </div>
+                        <div class="card-text">
+                            Tawshif is a web designer living in Bangladesh.
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="float-right">Joined in 2013</span>
+                        <span><i class=""></i>75 Friends</span>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </section>
+
+    {# experiencia #}
+    <section id="experience" class="featured-services">
+        <div class="jumbotron">
+            <h1>Experiencia ISEP CEU CV</h1>
+            <div class="row mbr-justify-content-center">
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/grupo-educativo.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Grupo educativo</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                <strong>1er grupo educativo</strong> del país.<br>
+                                La fundación San Pablo CEU con centros en todos los niveles educativos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/universidad-pionera.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Nuestro campus global</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                <strong>Instalaciones de primer nivel</strong> adaptado a las necesidades de nuestros alumnos.<br><br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/desarrollo-profesional.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Desarrollo profesional</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Convenios con empresas de primer nivel.<br>
+                                <strong>Programa CEU Pro</strong> de desarrollo de competencias extracurriculares.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/integracion.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Innovación docente y formativa</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Eres lo que haces.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/becas.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Becas</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                <strong>Nº 1</strong> en becas.<br>
+                                La institución educativa privada que más invierte en <strong>becas y ayudas</strong> en España.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/investigacion.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Profesionales en activo</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Contamos con profesores que son a la vez <strong>profesionales en activo</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/investigacion.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Amplia oferta de servicios</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Que aportan un <strong>valor añadido</strong> a tu formación: deportes, biblioteca, orientación, carreras profesionales y más.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </section>
+{% endcomment %}    
+
+    {# placeholder "content" #}
+{% endblock main_content %}
+
+
+{% block main_footer %}
+    <footer>
+        {% placeholder "footer" %}
+    </footer>
+{% endblock main_footer %}
+
+
+{% block custom_js %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // executes when HTML-Document is loaded and DOM is ready
+        
+            // breakpoint and up  
+            $(window).resize(function(){
+                if ($(window).width() >= 980){  
+            
+                    // when you hover a toggle show its dropdown menu
+                    $(".navbar .dropdown-toggle").hover(function () {
+                        $(this).parent().toggleClass("show");
+                        $(this).parent().find(".dropdown-menu").toggleClass("show"); 
+                    });
+            
+                    // hide the menu when the mouse leaves the dropdown
+                    $( ".navbar .dropdown-menu" ).mouseleave(function() {
+                    $(this).removeClass("show");  
+                    });
+                
+                // do something here
+                } 
+            });  
+        
+        // document ready  
+        });
+    </script>
+{% endblock custom_js %}

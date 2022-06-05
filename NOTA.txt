@@ -2,3 +2,23 @@ probando CMS utilizando el clon de django-cms-60min-demo-2021
 /home/roberto/Programación/django/github/django-cms-60min-demo-2021
 
 prueba para el CEU, pero utilizaré solo django
+
+
+
+
+-- migración de datos
+-- en la base de datos actual
+python manage.py dumpdata > datadump.json
+-- en la nueva base de datos
+python manage.py migrate
+python manage.py loaddata datadump.json
+
+
+1 .python manage.py dumpdata > db.json
+2. Change the database settings to new database such as of MySQL / PostgreSQL.
+3. python manage.py migrate
+4. python manage.py shell 
+   Enter the following in the shell
+   from django.contrib.contenttypes.models import ContentType
+   ContentType.objects.all().delete()
+5. python manage.py loaddata db.json
