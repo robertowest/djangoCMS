@@ -1,0 +1,367 @@
+{% extends 'layouts/default.html' %}
+{% load cms_tags sekizai_tags static i18n menu_tags %}
+
+
+{% block custom_css %}
+    <style type="text/css">
+        .nav {
+            padding-left: 0;
+        }
+        .nav li {
+            display: inline;
+            list-style-type: none;
+            padding-right: 20px;
+        }
+        .container {
+            width: 940px;
+            margin: 0 auto
+        }
+        .content {
+            float: left;
+            width: 80%;
+        }
+        .sidebar {
+            float: left;
+            width: 20%;
+        }
+
+        /* -------------------------------------------- */
+
+        section_OLD {
+            padding-top: 4rem;
+            padding-bottom: 5rem;
+            background-color: #f1f4fa;
+        }
+        .wrap {
+            display: flex;
+            background: white;
+            padding: 1rem 1rem 1rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 7px 7px 30px -5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .wrap:hover {
+            background: linear-gradient(135deg,#6394ff 0%,#0a193b 100%);
+            color: white;
+        }
+        
+        .ico-wrap {
+            margin: auto;
+        }
+        
+        .mbr-iconfont {
+            font-size: 4.5rem !important;
+            color: #313131;
+            margin: 1rem;
+            padding-right: 1rem;
+        }
+        .vcenter {
+            margin: auto;
+        }
+        
+        .mbr-section-title3 {
+            text-align: left;
+        }
+        h2 {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .display-5 {
+            /* font-family: 'Source Sans Pro',sans-serif; */
+            font-size: 1.4rem;
+        }
+        .mbr-bold {
+            font-weight: 700;
+        }
+        
+         p {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            line-height: 25px;
+        }
+        .display-6 {
+            /* font-family: 'Source Sans Pro',sans-serif; */
+            font-size: 1re
+        }
+        
+        /* -------------------------------------------- */
+
+        h5 {
+            font-size: 1.28571429em;
+            font-weight: 700;
+            line-height: 1.2857em;
+            margin: 0;
+        }
+        
+        .card {
+            font-size: 1em;
+            overflow: hidden;
+            padding: 0;
+            border: none;
+            border-radius: .28571429rem;
+            box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+        }
+        
+        .card-block {
+            font-size: 1em;
+            position: relative;
+            margin: 0;
+            padding: 1em;
+            border: none;
+            border-top: 1px solid rgba(34, 36, 38, .1);
+            box-shadow: none;
+        }
+        
+        .card-img-top {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .card-title {
+            font-size: 1.28571429em;
+            font-weight: 700;
+            line-height: 1.2857em;
+        }
+        
+        .card-text {
+            clear: both;
+            margin-top: .5em;
+            color: rgba(0, 0, 0, .68);
+        }
+        
+        .card-footer {
+            font-size: 1em;
+            position: static;
+            top: 0;
+            left: 0;
+            max-width: 100%;
+            padding: .75em 1em;
+            color: rgba(0, 0, 0, .4);
+            border-top: 1px solid rgba(0, 0, 0, .05) !important;
+            background: #fff;
+        }
+        
+        .card-inverse .btn {
+            border: 1px solid rgba(0, 0, 0, .05);
+        }
+        
+        .profile {
+            position: absolute;
+            top: -12px;
+            display: inline-block;
+            overflow: hidden;
+            box-sizing: border-box;
+            width: 25px;
+            height: 25px;
+            margin: 0;
+            border: 1px solid #fff;
+            border-radius: 50%;
+        }
+        
+        .profile-avatar {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        
+        .profile-inline {
+            position: relative;
+            top: 0;
+            display: inline-block;
+        }
+        
+        .profile-inline ~ .card-title {
+            display: inline-block;
+            margin-left: 4px;
+            vertical-align: top;
+        }
+        
+        .text-bold {
+            font-weight: 700;
+        }
+        
+        .meta {
+            font-size: 1em;
+            color: rgba(0, 0, 0, .4);
+        }
+        
+        .meta a {
+            text-decoration: none;
+            color: rgba(0, 0, 0, .4);
+        }
+        
+        .meta a:hover {
+            color: rgba(0, 0, 0, .87);
+        }        
+    </style>
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" href="{% static '/css/child.css' %}">
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
+    <link rel="stylesheet" href="{% static '/css/index.css' %}">
+{% endblock custom_css %}
+
+
+{% block main_navbar %}
+    <div class="wraper">
+        <header>
+            {% show_menu 0 100 100 100 "layouts/includes/menu_ciclos.html" %}
+        </header>
+    </div>
+{% endblock main_navbar %}
+
+
+{% block main_content %}
+    {% placeholder "carousel" %}
+    {% placeholder "posts" %}
+    {% placeholder "experience" %}
+
+    {# posts #}
+    <section>
+        <div class="container-fluid">
+            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
+                    <div class="card-block">
+                        <h4 class="card-title">Tawshif Ahsan Khan</h4>
+                        <div class="meta">
+                            <a href="#">Friends</a>
+                        </div>
+                        <div class="card-text">
+                            Tawshif is a web designer living in Bangladesh.
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="float-right">Joined in 2013</span>
+                        <span><i class=""></i>75 Friends</span>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </section>
+
+    {# experiencia #}
+    <section id="experience" class="featured-services">
+        <div class="jumbotron">
+            <h1>Experiencia ISEP CEU CV</h1>
+            <div class="row mbr-justify-content-center">
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/grupo-educativo.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Grupo educativo</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                <strong>1er grupo educativo</strong> del país.<br>
+                                La fundación San Pablo CEU con centros en todos los niveles educativos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/universidad-pionera.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Nuestro campus global</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                <strong>Instalaciones de primer nivel</strong> adaptado a las necesidades de nuestros alumnos.<br><br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/desarrollo-profesional.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Desarrollo profesional</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Convenios con empresas de primer nivel.<br>
+                                <strong>Programa CEU Pro</strong> de desarrollo de competencias extracurriculares.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/integracion.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Innovación docente y formativa</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Eres lo que haces.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/becas.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Becas</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                <strong>Nº 1</strong> en becas.<br>
+                                La institución educativa privada que más invierte en <strong>becas y ayudas</strong> en España.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/investigacion.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Profesionales en activo</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Contamos con profesores que son a la vez <strong>profesionales en activo</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mbr-col-md-6">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <img src="{% static '/assets/ciclos/img/experiencia/investigacion.png' %}" width="104px" />
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Amplia oferta de servicios</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">
+                                Que aportan un <strong>valor añadido</strong> a tu formación: deportes, biblioteca, orientación, carreras profesionales y más.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </section>
+
+    {# placeholder "content" #}
+{% endblock main_content %}
+
+
+{% block main_footer %}
+    <footer>
+        {% placeholder "footer" %}
+    </footer>
+{% endblock main_footer %}
+
+
+{% block custom_js %}
+    <!-- script src="{% static '/vendors/bootstrap/5.0.2/js/bootstrap.bundle.min.js' %}"></script -->
+    <script src="{% static '/js/child.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+{% endblock custom_js %}
